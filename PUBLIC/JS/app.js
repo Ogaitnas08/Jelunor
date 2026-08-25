@@ -887,17 +887,7 @@ if (rechargeButton) {
 }
 
 
-// El botón grande + del celular
-// también abrirá recarga por ahora.
 
-if (mainAction) {
-
-    mainAction.addEventListener(
-        "click",
-        abrirRecarga
-    );
-
-}
 
 
 // =====================================================
@@ -2790,6 +2780,362 @@ if (historyCornerButton) {
 
             window.location.href =
                 "historial.html";
+
+        }
+    );
+
+}
+
+// =====================================================
+// NAVEGACIÓN MÓVIL
+// =====================================================
+
+const mobileHomeButton =
+    document.getElementById(
+        "mobileHomeButton"
+    );
+
+const mobileMovementsButton =
+    document.getElementById(
+        "mobileMovementsButton"
+    );
+
+const mobileProductsButton =
+    document.getElementById(
+        "mobileProductsButton"
+    );
+
+const mobileProfileButton =
+    document.getElementById(
+        "mobileProfileButton"
+    );
+
+const mobileQuickMenu =
+    document.getElementById(
+        "mobileQuickMenu"
+    );
+
+const mobileQuickBackdrop =
+    document.getElementById(
+        "mobileQuickBackdrop"
+    );
+
+const closeMobileQuickMenu =
+    document.getElementById(
+        "closeMobileQuickMenu"
+    );
+
+const quickTransferButton =
+    document.getElementById(
+        "quickTransferButton"
+    );
+
+const quickRechargeButton =
+    document.getElementById(
+        "quickRechargeButton"
+    );
+
+const quickPayButton =
+    document.getElementById(
+        "quickPayButton"
+    );
+
+const productsSection =
+    document.getElementById(
+        "productsSection"
+    );
+
+const profileSection =
+    document.getElementById(
+        "profileSection"
+    );
+
+
+// =====================================================
+// MARCAR BOTÓN ACTIVO
+// =====================================================
+
+function activarNavegacionMovil(
+    botonActivo
+) {
+
+    document
+        .querySelectorAll(
+            "#mobileNavigation .nav"
+        )
+        .forEach(
+            boton => {
+
+                boton.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    if (botonActivo) {
+
+        botonActivo.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// INICIO
+// =====================================================
+
+if (mobileHomeButton) {
+
+    mobileHomeButton.addEventListener(
+        "click",
+        () => {
+
+            activarNavegacionMovil(
+                mobileHomeButton
+            );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// MOVIMIENTOS
+// =====================================================
+
+if (mobileMovementsButton) {
+
+    mobileMovementsButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "historial.html";
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// PRODUCTOS
+// =====================================================
+
+if (mobileProductsButton) {
+
+    mobileProductsButton.addEventListener(
+        "click",
+        () => {
+
+            activarNavegacionMovil(
+                mobileProductsButton
+            );
+
+
+            if (productsSection) {
+
+                productsSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+
+                productsSection.classList.add(
+                    "mobile-section-highlight"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        productsSection.classList.remove(
+                            "mobile-section-highlight"
+                        );
+
+                    },
+                    1200
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// PERFIL
+// =====================================================
+
+if (mobileProfileButton) {
+
+    mobileProfileButton.addEventListener(
+        "click",
+        () => {
+
+            activarNavegacionMovil(
+                mobileProfileButton
+            );
+
+
+            if (profileSection) {
+
+                profileSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+                profileSection.classList.add(
+                    "mobile-section-highlight"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        profileSection.classList.remove(
+                            "mobile-section-highlight"
+                        );
+
+                    },
+                    1200
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// MENÚ DEL BOTÓN +
+// =====================================================
+
+function abrirMenuRapido() {
+
+    if (!mobileQuickMenu) {
+        return;
+    }
+
+    mobileQuickMenu.classList.remove(
+        "hidden"
+    );
+
+    document.body.classList.add(
+        "mobile-menu-open"
+    );
+
+}
+
+
+function cerrarMenuRapido() {
+
+    if (!mobileQuickMenu) {
+        return;
+    }
+
+    mobileQuickMenu.classList.add(
+        "hidden"
+    );
+
+    document.body.classList.remove(
+        "mobile-menu-open"
+    );
+
+}
+
+
+if (mainAction) {
+
+    mainAction.addEventListener(
+        "click",
+        abrirMenuRapido
+    );
+
+}
+
+
+if (closeMobileQuickMenu) {
+
+    closeMobileQuickMenu.addEventListener(
+        "click",
+        cerrarMenuRapido
+    );
+
+}
+
+
+if (mobileQuickBackdrop) {
+
+    mobileQuickBackdrop.addEventListener(
+        "click",
+        cerrarMenuRapido
+    );
+
+}
+
+
+// =====================================================
+// OPERACIONES DEL +
+// =====================================================
+
+if (quickTransferButton) {
+
+    quickTransferButton.addEventListener(
+        "click",
+        () => {
+
+            cerrarMenuRapido();
+
+            abrirTransferencia();
+
+        }
+    );
+
+}
+
+
+if (quickRechargeButton) {
+
+    quickRechargeButton.addEventListener(
+        "click",
+        () => {
+
+            cerrarMenuRapido();
+
+            abrirRecarga();
+
+        }
+    );
+
+}
+
+
+if (quickPayButton) {
+
+    quickPayButton.addEventListener(
+        "click",
+        () => {
+
+            cerrarMenuRapido();
+
+            abrirPago();
 
         }
     );

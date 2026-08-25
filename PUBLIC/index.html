@@ -378,7 +378,10 @@
 
             <!-- INFORMACIÓN DE CUENTA -->
 
-            <article class="account-summary">
+            <article
+    class="account-summary"
+    id="productsSection"
+>
 
                 <div class="summary-header">
 
@@ -638,7 +641,10 @@
         <!-- DATOS DEL TITULAR -->
         <!-- ============================= -->
 
-        <section class="user-information">
+        <section
+    class="user-information"
+    id="profileSection"
+>
 
 
             <div class="section-header">
@@ -771,86 +777,141 @@
     <!-- ============================= -->
     <!-- MENÚ INFERIOR CELULAR -->
     <!-- ============================= -->
-
-    <nav
-        class="bottom-nav"
-        id="mobileNavigation"
+ <nav
+    class="bottom-nav"
+    id="mobileNavigation"
+ >
+    <button
+        type="button"
+        class="nav active"
+        id="mobileHomeButton"
     >
+        <span>⌂</span>
+        <small>Inicio</small>
+    </button>
 
-        <button
-            type="button"
-            class="nav active"
-        >
+    <button
+        type="button"
+        class="nav"
+        id="mobileMovementsButton"
+    >
+        <span>▤</span>
+        <small>Movimientos</small>
+    </button>
 
-            <span>
-                ⌂
-            </span>
+    <button
+        type="button"
+        class="main-action"
+        id="mainAction"
+        aria-label="Operaciones rápidas"
+    >
+        +
+    </button>
 
-            <small>
-                Inicio
-            </small>
+    <button
+        type="button"
+        class="nav"
+        id="mobileProductsButton"
+    >
+        <span>◫</span>
+        <small>Productos</small>
+    </button>
 
-        </button>
-
-
-        <button
-            type="button"
-            class="nav"
-        >
-
-            <span>
-                ▤
-            </span>
-
-            <small>
-                Movimientos
-            </small>
-
-        </button>
-
-
-        <button
-            type="button"
-            class="main-action"
-            id="mainAction"
-            aria-label="Operación rápida"
-        >
-            +
-        </button>
-
-
-        <button
-            type="button"
-            class="nav"
-        >
-
-            <span>
-                ◫
-            </span>
-
-            <small>
-                Productos
-            </small>
-
-        </button>
+    <button
+        type="button"
+        class="nav"
+        id="mobileProfileButton"
+    >
+        <span>◉</span>
+        <small>Perfil</small>
+    </button>
+ </nav>
 
 
-        <button
-            type="button"
-            class="nav"
-        >
+<!-- MENÚ RÁPIDO DEL BOTÓN + -->
 
-            <span>
-                ◉
-            </span>
+<div
+    id="mobileQuickMenu"
+    class="mobile-quick-menu hidden"
+>
+    <div
+        id="mobileQuickBackdrop"
+        class="mobile-quick-backdrop"
+    ></div>
 
-            <small>
-                Perfil
-            </small>
+    <section class="mobile-quick-sheet">
 
-        </button>
+        <div class="mobile-quick-header">
 
-    </nav>
+            <div>
+                <span class="section-small">
+                    JELUNOR
+                </span>
+
+                <h3>
+                    ¿Qué quieres hacer?
+                </h3>
+            </div>
+
+            <button
+                type="button"
+                id="closeMobileQuickMenu"
+                class="mobile-quick-close"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="mobile-quick-actions">
+
+            <button
+                type="button"
+                id="quickTransferButton"
+                class="mobile-quick-option"
+            >
+                <span>↗</span>
+
+                <div>
+                    <strong>Transferir</strong>
+                    <small>Envía dinero</small>
+                </div>
+            </button>
+
+
+            <button
+                type="button"
+                id="quickRechargeButton"
+                class="mobile-quick-option"
+            >
+                <span>＋</span>
+
+                <div>
+                    <strong>Recargar</strong>
+                    <small>Agrega saldo</small>
+                </div>
+            </button>
+
+
+            <button
+                type="button"
+                id="quickPayButton"
+                class="mobile-quick-option"
+            >
+                <span>$</span>
+
+                <div>
+                    <strong>Pagar</strong>
+                    <small>Paga servicios</small>
+                </div>
+            </button>
+
+        </div>
+
+    </section>
+</div>
 
 </div>
 
