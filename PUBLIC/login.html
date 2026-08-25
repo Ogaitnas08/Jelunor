@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión | Jelunor</title>
+
+    <link rel="stylesheet" href="CSS/auth.css">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <section class="auth-brand">
+
+        <div class="brand-content">
+
+            <img
+                src="asset/logo.jpeg"
+                alt="Jelunor"
+            >
+
+            <h1>Jelunor</h1>
+
+            <p>
+                Accede de forma segura a tu cuenta.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="auth-form-section">
+
+        <div class="auth-card">
+
+            <div class="auth-heading">
+
+                <span>JELUNOR</span>
+
+                <h2>
+                    Iniciar sesión
+                </h2>
+
+                <p>
+                    Ingresa tus credenciales.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        required
+                        autocomplete="email"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                        autocomplete="current-password"
+                    >
+
+                </div>
+
+
+                <div
+                    id="mensaje"
+                    class="mensaje"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="loginButton"
+                >
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                <p>
+                    ¿Aún no tienes una cuenta?
+                </p>
+
+                <a href="registrarse.html">
+                    Crear cuenta
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="JS/login.js"></script>
+
+</body>
+</html>

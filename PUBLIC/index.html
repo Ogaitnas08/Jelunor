@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Jelunor</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/style.css"
+    >
+</head>
+
+<body>
+
+
+<!-- ===================================================== -->
+<!-- PANTALLA DE CARGA -->
+<!-- ===================================================== -->
+
+<section
+    id="loadingView"
+    class="loading-screen"
+>
+
+    <div class="loading-brand">
+
+        <img
+            src="asset/logo.jpeg"
+            alt="Jelunor"
+        >
+
+        <p>
+            Cargando
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- USUARIO SIN SESIÓN -->
+<!-- ===================================================== -->
+
+<section
+    id="guestView"
+    class="guest-screen hidden"
+>
+
+    <button
+        type="button"
+        class="guest-help"
+        aria-label="Ayuda"
+    >
+        ?
+    </button>
+
+
+    <div class="guest-brand">
+
+        <img
+            src="asset/logo.jpeg"
+            alt="Logo Jelunor"
+        >
+
+        <p>
+            Finanzas con impacto
+        </p>
+
+    </div>
+
+
+    <div class="guest-actions">
+
+        <a
+            href="registrarse.html"
+            class="guest-button create-account"
+        >
+            Crea tu Jelunor
+        </a>
+
+        <a
+            href="login.html"
+            class="guest-button login-account"
+        >
+            Entra
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- USUARIO CON SESIÓN -->
+<!-- ===================================================== -->
+
+<div
+    id="userView"
+    class="app hidden"
+>
+
+
+    <!-- ============================= -->
+    <!-- HEADER -->
+    <!-- ============================= -->
+
+    <header class="header">
+
+
+        <div class="header-left">
+
+        <button
+    type="button"
+    class="menu-btn history-corner-button"
+    id="historyCornerButton"
+    aria-label="Ver movimientos"
+    title="Movimientos"
+>
+    <span>▤</span>
+</button>
+
+
+            <div class="brand">
+                JELUNOR
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGACIÓN DE PC -->
+
+        <nav class="desktop-nav">
+
+            <button
+                type="button"
+                class="desktop-nav-item active"
+            >
+                Inicio
+            </button>
+
+            <button
+                type="button"
+                class="desktop-nav-item"
+            >
+                Movimientos
+            </button>
+
+            <button
+                type="button"
+                class="desktop-nav-item"
+            >
+                Productos
+            </button>
+
+            <button
+                type="button"
+                class="desktop-nav-item"
+            >
+                Ayuda
+            </button>
+
+        </nav>
+
+
+        <div class="header-right">
+
+           <div class="notification-wrapper">
+
+    <button
+        type="button"
+        class="notification"
+        id="notificationButton"
+        aria-label="Notificaciones"
+    >
+        <span>🔔</span>
+
+        <span
+            id="notificationBadge"
+            class="notification-badge hidden"
+        >
+            0
+        </span>
+
+    </button>
+
+
+    <div
+        id="notificationPanel"
+        class="notification-panel hidden"
+    >
+
+        <div class="notification-panel-header">
+
+            <div>
+
+                <span class="section-small">
+                    JELUNOR
+                </span>
+
+                <h3>
+                    Notificaciones
+                </h3>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="markAllNotifications"
+                class="mark-all-notifications"
+            >
+                Marcar leídas
+            </button>
+
+        </div>
+
+
+        <div
+            id="notificationList"
+            class="notification-list"
+        >
+
+            <div class="notification-empty">
+                Cargando...
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+            <button
+                type="button"
+                class="profile-button"
+                aria-label="Perfil"
+            >
+
+                <span
+                    id="userInitials"
+                    class="profile-initials"
+                >
+                    JL
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+                Salir
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO -->
+    <!-- ============================= -->
+
+    <main class="content">
+
+
+        <!-- BIENVENIDA -->
+
+        <section class="welcome">
+
+            <div>
+
+                <span class="small-text">
+                    Bienvenido a Jelunor
+                </span>
+
+                <h2>
+                    Hola,
+                    <span id="userName">
+                        ...
+                    </span>
+                    👋
+                </h2>
+
+            </div>
+
+
+            <div class="welcome-date">
+
+                <span>
+                    Cuenta activa
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- CUENTA PRINCIPAL -->
+        <!-- ============================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SALDO -->
+
+            <article class="balance-card">
+
+
+                <div class="balance-top">
+
+                    <div>
+
+                        <span class="balance-label">
+                            Saldo disponible
+                        </span>
+
+                        <span
+                            id="accountType"
+                            class="account-type"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="eyeButton"
+                        class="eye-button"
+                        aria-label="Mostrar u ocultar saldo"
+                    >
+                        ◉
+                    </button>
+
+                </div>
+
+
+                <h1 id="balance">
+                    $ 0
+                </h1>
+
+
+                <div class="balance-bottom">
+
+                    <div class="account-data">
+
+                        <span class="account-title">
+                            Número de cuenta
+                        </span>
+
+                        <strong id="accountNumber">
+                            ••••
+                        </strong>
+
+                    </div>
+
+
+                    <div class="card-circle"></div>
+
+                </div>
+
+            </article>
+
+
+            <!-- INFORMACIÓN DE CUENTA -->
+
+            <article class="account-summary">
+
+                <div class="summary-header">
+
+                    <div>
+
+                        <span class="summary-label">
+                            Mi cuenta
+                        </span>
+
+                        <h3>
+                            Información
+                        </h3>
+
+                    </div>
+
+
+                    <span class="status-badge">
+                        Activa
+                    </span>
+
+                </div>
+
+
+                <div class="account-summary-grid">
+
+                    <div class="summary-item">
+
+                        <span>
+                            Tipo
+                        </span>
+
+                        <strong id="accountTypeDetail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Número
+                        </span>
+
+                        <strong id="accountNumberDetail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Estado
+                        </span>
+
+                        <strong>
+                            Activa
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Moneda
+                        </span>
+
+                        <strong>
+                            COP
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- OPERACIONES -->
+        <!-- ============================= -->
+
+        <section class="quick-actions-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-small">
+                        OPERACIONES
+                    </span>
+
+                    <h3>
+                        ¿Qué quieres hacer?
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+
+                <!-- TRANSFERIR -->
+
+                <button
+                    type="button"
+                    class="action"
+                    id="transferButton"
+                >
+
+                    <span class="action-icon">
+                        ↗
+                    </span>
+
+                    <strong>
+                        Transferir
+                    </strong>
+
+                    <small>
+                        Envía dinero
+                    </small>
+
+                </button>
+
+
+                <!-- RECARGAR -->
+
+                <button
+                    type="button"
+                    class="action"
+                    id="rechargeButton"
+                >
+
+                    <span class="action-icon mint">
+                        ＋
+                    </span>
+
+                    <strong>
+                        Recargar
+                    </strong>
+
+                    <small>
+                        Agrega dinero
+                    </small>
+
+                </button>
+
+
+                <!-- PAGAR -->
+
+                <button
+                    type="button"
+                    class="action"
+                    id="payButton"
+                >
+
+                    <span class="action-icon gold">
+                        $
+                    </span>
+
+                    <strong>
+                        Pagar
+                    </strong>
+
+                    <small>
+                        Realiza un pago
+                    </small>
+
+                </button>
+
+
+                <!-- MÁS -->
+
+                <button
+                    type="button"
+                    class="action"
+                    id="moreButton"
+                >
+
+                    <span class="action-icon light">
+                        ⋯
+                    </span>
+
+                    <strong>
+                        Más
+                    </strong>
+
+                    <small>
+                        Más opciones
+                    </small>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- MOVIMIENTOS -->
+        <!-- ============================= -->
+
+        <section class="transactions-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-small">
+                        ACTIVIDAD
+                    </span>
+
+                    <h3>
+                        Últimos movimientos
+                    </h3>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="view-all"
+                    id="viewAllButton"
+                >
+                    Ver todos
+                </button>
+
+            </div>
+
+
+            <div
+                id="movementsList"
+                class="movements"
+            >
+
+                <div class="empty-movements">
+
+                    Cargando movimientos...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- DATOS DEL TITULAR -->
+        <!-- ============================= -->
+
+        <section class="user-information">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-small">
+                        PERFIL
+                    </span>
+
+                    <h3>
+                        Información del titular
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="user-information-card">
+
+
+                <div class="user-information-item">
+
+                    <span>
+                        Nombre
+                    </span>
+
+                    <strong id="profileName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="user-information-item">
+
+                    <span>
+                        Correo
+                    </span>
+
+                    <strong id="profileEmail">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="user-information-item">
+
+                    <span>
+                        Documento
+                    </span>
+
+                    <strong id="profileDocument">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="user-information-item">
+
+                    <span>
+                        Teléfono
+                    </span>
+
+                    <strong id="profilePhone">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- SEGURIDAD -->
+        <!-- ============================= -->
+
+        <section class="security-card">
+
+            <div class="security-icon">
+                ✓
+            </div>
+
+
+            <div class="security-info">
+
+                <strong>
+                    Tu cuenta Jelunor está protegida
+                </strong>
+
+                <span>
+                    Tus datos y movimientos se procesan
+                    desde el servidor de Jelunor.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- FOOTER -->
+        <!-- ============================= -->
+
+        <footer class="company-footer">
+
+            <img
+                src="asset/logo.jpeg"
+                alt="Jelunor"
+            >
+
+            <p>
+                Finanzas con impacto social
+            </p>
+
+            <span>
+                © 2026 Jelunor
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- MENÚ INFERIOR CELULAR -->
+    <!-- ============================= -->
+
+    <nav
+        class="bottom-nav"
+        id="mobileNavigation"
+    >
+
+        <button
+            type="button"
+            class="nav active"
+        >
+
+            <span>
+                ⌂
+            </span>
+
+            <small>
+                Inicio
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="nav"
+        >
+
+            <span>
+                ▤
+            </span>
+
+            <small>
+                Movimientos
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="main-action"
+            id="mainAction"
+            aria-label="Operación rápida"
+        >
+            +
+        </button>
+
+
+        <button
+            type="button"
+            class="nav"
+        >
+
+            <span>
+                ◫
+            </span>
+
+            <small>
+                Productos
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="nav"
+        >
+
+            <span>
+                ◉
+            </span>
+
+            <small>
+                Perfil
+            </small>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- MODAL DE RECARGA -->
+<!-- ===================================================== -->
+
+<div
+    id="rechargeModal"
+    class="operation-modal hidden"
+>
+
+    <div
+        id="rechargeBackdrop"
+        class="modal-backdrop"
+    ></div>
+
+
+    <section class="operation-card">
+
+
+        <button
+            type="button"
+            id="closeRechargeModal"
+            class="modal-close"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <div class="operation-heading">
+
+
+            <span class="operation-symbol">
+                +
+            </span>
+
+
+            <div>
+
+                <span class="section-small">
+                    JELUNOR
+                </span>
+
+                <h2>
+                    Recargar saldo
+                </h2>
+
+                <p>
+                    Agrega dinero a tu cuenta Jelunor.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="rechargeForm">
+
+
+            <label for="rechargeAmount">
+                Valor de la recarga
+            </label>
+
+
+            <div class="money-input">
+
+                <span>
+                    $
+                </span>
+
+                <input
+                    type="number"
+                    id="rechargeAmount"
+                    min="1"
+                    max="100000000"
+                    step="1"
+                    placeholder="0"
+                    required
+                >
+
+            </div>
+
+
+            <div class="quick-amounts">
+
+                <button
+                    type="button"
+                    data-amount="50000"
+                >
+                    $50.000
+                </button>
+
+                <button
+                    type="button"
+                    data-amount="100000"
+                >
+                    $100.000
+                </button>
+
+                <button
+                    type="button"
+                    data-amount="200000"
+                >
+                    $200.000
+                </button>
+
+                <button
+                    type="button"
+                    data-amount="500000"
+                >
+                    $500.000
+                </button>
+
+            </div>
+
+
+            <div
+                id="rechargeMessage"
+                class="operation-message"
+            ></div>
+
+
+            <button
+                type="submit"
+                id="confirmRecharge"
+                class="operation-submit"
+            >
+                Recargar
+            </button>
+
+        </form>
+
+    </section>
+
+</div>
+<!-- ===================================================== -->
+<!-- MODAL TRANSFERENCIA -->
+<!-- ===================================================== -->
+
+<div
+    id="transferModal"
+    class="operation-modal hidden"
+>
+
+    <div
+        id="transferBackdrop"
+        class="modal-backdrop"
+    ></div>
+
+
+    <section class="operation-card">
+
+
+        <button
+            type="button"
+            id="closeTransferModal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+
+        <div class="operation-heading">
+
+            <span class="operation-symbol transfer-symbol">
+                ↗
+            </span>
+
+
+            <div>
+
+                <span class="section-small">
+                    JELUNOR
+                </span>
+
+                <h2>
+                    Transferir dinero
+                </h2>
+
+                <p>
+                    Envía dinero a otra cuenta Jelunor.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="transferForm">
+
+
+            <!-- CUENTA DESTINO -->
+
+            <label for="transferAccount">
+                Número de cuenta destino
+            </label>
+
+
+            <div class="transfer-input">
+
+                <input
+                    type="text"
+                    id="transferAccount"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    maxlength="20"
+                    placeholder="Ej. 5839201746"
+                    required
+                >
+                <!-- DESTINATARIO ENCONTRADO -->
+
+<div
+    id="recipientCard"
+    class="recipient-card hidden"
+>
+
+    <div class="recipient-avatar">
+
+        <span id="recipientInitials">
+            JL
+        </span>
+
+    </div>
+
+
+    <div class="recipient-data">
+
+        <span>
+            Vas a enviar a
+        </span>
+
+        <strong id="recipientName">
+            -
+        </strong>
+
+        <small id="recipientAccount">
+            -
+        </small>
+
+    </div>
+
+
+    <div class="recipient-check">
+        ✓
+    </div>
+
+</div>
+
+
+<div
+    id="recipientSearchMessage"
+    class="recipient-search-message"
+></div>
+
+            </div>
+
+
+
+            <!-- MONTO -->
+
+            <label
+                for="transferAmount"
+                class="transfer-money-label"
+            >
+                Valor a transferir
+            </label>
+
+
+            <div class="money-input">
+
+                <span>
+                    $
+                </span>
+
+                <input
+                    type="number"
+                    id="transferAmount"
+                    min="1"
+                    max="100000000"
+                    step="1"
+                    placeholder="0"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- SALDO -->
+
+            <div class="available-balance">
+
+                <span>
+                    Saldo disponible
+                </span>
+
+                <strong id="transferAvailableBalance">
+                    $0
+                </strong>
+
+            </div>
+
+
+
+            <!-- MENSAJE -->
+
+            <div
+                id="transferMessage"
+                class="operation-message"
+            ></div>
+
+
+
+            <!-- CONFIRMAR -->
+
+            <button
+    type="submit"
+    id="confirmTransfer"
+    class="operation-submit"
+    disabled
+>
+    Verifica la cuenta
+</button>
+
+
+        </form>
+
+    </section>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- MODAL PAGAR -->
+<!-- ===================================================== -->
+
+<div
+    id="payModal"
+    class="operation-modal hidden"
+>
+
+    <div
+        id="payBackdrop"
+        class="modal-backdrop"
+    ></div>
+
+
+    <section class="operation-card">
+
+
+        <button
+            type="button"
+            id="closePayModal"
+            class="modal-close"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <div class="operation-heading">
+
+            <span class="operation-symbol pay-symbol">
+                $
+            </span>
+
+
+            <div>
+
+                <span class="section-small">
+                    JELUNOR
+                </span>
+
+                <h2>
+                    Pagar
+                </h2>
+
+                <p>
+                    Realiza pagos desde tu saldo Jelunor.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="payForm">
+
+
+            <!-- SERVICIO -->
+
+            <label for="payService">
+                ¿Qué quieres pagar?
+            </label>
+
+
+            <div class="pay-select-wrapper">
+
+                <select
+                    id="payService"
+                    required
+                >
+
+                    <option value="">
+                        Selecciona un servicio
+                    </option>
+
+                    <option value="energia">
+                        Energía
+                    </option>
+
+                    <option value="agua">
+                        Agua
+                    </option>
+
+                    <option value="gas">
+                        Gas
+                    </option>
+
+                    <option value="internet">
+                        Internet
+                    </option>
+
+                    <option value="celular">
+                        Celular
+                    </option>
+
+                    <option value="television">
+                        Televisión
+                    </option>
+
+                    <option value="otro">
+                        Otro servicio
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- REFERENCIA -->
+
+            <label
+                for="payReference"
+                class="pay-field-label"
+            >
+                Referencia o número de factura
+            </label>
+
+
+            <div class="transfer-input">
+
+                <input
+                    type="text"
+                    id="payReference"
+                    maxlength="60"
+                    autocomplete="off"
+                    placeholder="Ej. 84930210"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MONTO -->
+
+            <label
+                for="payAmount"
+                class="pay-field-label"
+            >
+                Valor a pagar
+            </label>
+
+
+            <div class="money-input">
+
+                <span>
+                    $
+                </span>
+
+                <input
+                    type="number"
+                    id="payAmount"
+                    min="1"
+                    max="100000000"
+                    step="1"
+                    placeholder="0"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SALDO -->
+
+            <div class="available-balance">
+
+                <span>
+                    Saldo disponible
+                </span>
+
+                <strong id="payAvailableBalance">
+                    $0
+                </strong>
+
+            </div>
+
+
+            <!-- MENSAJES -->
+
+            <div
+                id="payMessage"
+                class="operation-message"
+            ></div>
+
+
+            <!-- BOTÓN -->
+
+            <button
+                type="submit"
+                id="confirmPay"
+                class="operation-submit"
+            >
+                Pagar
+            </button>
+
+        </form>
+
+    </section>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
+
+<script src="JS/app.js"></script>
+
+</body>
+
+</html>

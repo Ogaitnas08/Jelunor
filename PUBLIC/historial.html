@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Movimientos | Jelunor</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/style.css"
+    >
+
+</head>
+
+<body class="jelunor-history-page">
+
+
+<!-- ===================================================== -->
+<!-- CARGANDO -->
+<!-- ===================================================== -->
+
+<section
+    id="historyLoading"
+    class="history-new-loading"
+>
+
+    <div class="history-new-loading-content">
+
+        <img
+            src="asset/logo.jpeg"
+            alt="Jelunor"
+        >
+
+        <span>
+            JELUNOR
+        </span>
+
+        <p>
+            Cargando tus movimientos...
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- HISTORIAL -->
+<!-- ===================================================== -->
+
+<div
+    id="historyApp"
+    class="history-new-app hidden"
+>
+
+
+    <!-- ============================= -->
+    <!-- HEADER -->
+    <!-- ============================= -->
+
+    <header class="history-new-header">
+
+        <div class="history-new-header-inner">
+
+
+            <a
+                href="/"
+                class="history-new-back"
+                aria-label="Volver"
+            >
+                ←
+            </a>
+
+
+            <div class="history-new-brand">
+
+                <span>
+                    JELUNOR
+                </span>
+
+                <strong>
+                    Movimientos
+                </strong>
+
+            </div>
+
+
+            <div class="history-new-balance">
+
+                <span>
+                    Saldo
+                </span>
+
+                <strong id="historyBalance">
+                    $0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO -->
+    <!-- ============================= -->
+
+    <main class="history-new-content">
+
+
+        <!-- TÍTULO -->
+
+        <section class="history-new-title">
+
+            <span class="history-new-eyebrow">
+                TU ACTIVIDAD
+            </span>
+
+            <h1>
+                Movimientos
+            </h1>
+
+            <p>
+                Todo lo que pasa con tu cuenta Jelunor,
+                en un solo lugar.
+            </p>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- BUSCADOR -->
+        <!-- ============================= -->
+
+        <section class="history-new-search">
+
+            <span class="history-search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="historySearch"
+                placeholder="Busca un movimiento"
+                autocomplete="off"
+            >
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- FILTROS -->
+        <!-- ============================= -->
+
+        <section
+            id="historyFilters"
+            class="history-new-filters"
+        >
+
+            <button
+                type="button"
+                class="history-new-filter active"
+                data-filter="todos"
+            >
+                Todos
+            </button>
+
+            <button
+                type="button"
+                class="history-new-filter"
+                data-filter="entradas"
+            >
+                Entradas
+            </button>
+
+            <button
+                type="button"
+                class="history-new-filter"
+                data-filter="salidas"
+            >
+                Salidas
+            </button>
+
+            <button
+                type="button"
+                class="history-new-filter"
+                data-filter="recarga"
+            >
+                Recargas
+            </button>
+
+            <button
+                type="button"
+                class="history-new-filter"
+                data-filter="transferencia"
+            >
+                Transferencias
+            </button>
+
+            <button
+                type="button"
+                class="history-new-filter"
+                data-filter="pago"
+            >
+                Pagos
+            </button>
+
+        </section>
+
+
+        <!-- RESULTADOS -->
+
+        <div class="history-new-results-line">
+
+            <span id="historyResults">
+                0 movimientos
+            </span>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- MOVIMIENTOS AGRUPADOS -->
+        <!-- ============================= -->
+
+        <section
+            id="historyList"
+            class="history-new-list"
+        >
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- VOLVER -->
+        <!-- ============================= -->
+
+        <a
+            href="/"
+            class="history-new-home-button"
+        >
+            ← Volver a mi cuenta
+        </a>
+
+
+        <!-- ============================= -->
+        <!-- FOOTER -->
+        <!-- ============================= -->
+
+        <footer class="history-new-footer">
+
+            <img
+                src="asset/logo.jpeg"
+                alt="Jelunor"
+            >
+
+            <div>
+
+                <strong>
+                    JELUNOR
+                </strong>
+
+                <span>
+                    Finanzas con impacto social
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="JS/historial.js"></script>
+
+</body>
+
+</html>
