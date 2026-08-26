@@ -22,6 +22,11 @@ const userView =
 const userName =
     document.getElementById("userName");
 
+
+const headerProfilePhoto =
+document.getElementById(
+    "headerProfilePhoto"
+);
 const userInitials =
     document.getElementById("userInitials");
 
@@ -594,6 +599,35 @@ function cargarDatos(datos) {
     userInitials.textContent =
         obtenerIniciales(nombre);
 
+        if (
+    usuarioActual.fotoPerfil
+) {
+
+    headerProfilePhoto.src =
+        usuarioActual.fotoPerfil;
+
+    headerProfilePhoto.classList.remove(
+        "hidden"
+    );
+
+    userInitials.classList.add(
+        "hidden"
+    );
+
+} else {
+
+    headerProfilePhoto.removeAttribute(
+        "src"
+    );
+
+    headerProfilePhoto.classList.add(
+        "hidden"
+    );
+
+    userInitials.classList.remove(
+        "hidden"
+    );
+}
 
     // PERFIL
 
@@ -1204,15 +1238,15 @@ if (logoutButton) {
 // MÁS
 // =====================================================
 
+
 if (moreButton) {
 
     moreButton.addEventListener(
         "click",
         () => {
 
-            alert(
-                "Próximamente habrá más opciones."
-            );
+            window.location.href =
+                "servicios.html";
 
         }
     );
@@ -1229,9 +1263,8 @@ if (viewAllButton) {
         "click",
         () => {
 
-            alert(
-                "Después construiremos la pantalla completa de movimientos."
-            );
+            window.location.href =
+                "historial.html";
 
         }
     );
@@ -2930,7 +2963,7 @@ if (mobileMovementsButton) {
 
 
 // =====================================================
-// PRODUCTOS
+// SERVICIOS
 // =====================================================
 
 if (mobileProductsButton) {
@@ -2939,43 +2972,12 @@ if (mobileProductsButton) {
         "click",
         () => {
 
-            activarNavegacionMovil(
-                mobileProductsButton
-            );
-
-
-            if (productsSection) {
-
-                productsSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-
-                productsSection.classList.add(
-                    "mobile-section-highlight"
-                );
-
-
-                setTimeout(
-                    () => {
-
-                        productsSection.classList.remove(
-                            "mobile-section-highlight"
-                        );
-
-                    },
-                    1200
-                );
-
-            }
+            window.location.href =
+                "servicios.html";
 
         }
     );
-
 }
-
-
 // =====================================================
 // PERFIL
 // =====================================================
@@ -2986,40 +2988,11 @@ if (mobileProfileButton) {
         "click",
         () => {
 
-            activarNavegacionMovil(
-                mobileProfileButton
-            );
-
-
-            if (profileSection) {
-
-                profileSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-
-                profileSection.classList.add(
-                    "mobile-section-highlight"
-                );
-
-
-                setTimeout(
-                    () => {
-
-                        profileSection.classList.remove(
-                            "mobile-section-highlight"
-                        );
-
-                    },
-                    1200
-                );
-
-            }
+            window.location.href =
+                "perfil.html";
 
         }
     );
-
 }
 
 
@@ -3142,4 +3115,104 @@ if (quickPayButton) {
 
 }
 
+// =====================================================
+// NAVEGACIÓN DE ESCRITORIO
+// =====================================================
+
+const desktopHomeButton =
+    document.getElementById(
+        "desktopHomeButton"
+    );
+
+const desktopMovementsButton =
+    document.getElementById(
+        "desktopMovementsButton"
+    );
+
+const desktopServicesButton =
+    document.getElementById(
+        "desktopServicesButton"
+    );
+
+const desktopHelpButton =
+    document.getElementById(
+        "desktopHelpButton"
+    );
+
+const profileButton =
+    document.getElementById(
+        "profileButton"
+    );
+
+
+if (desktopHomeButton) {
+
+    desktopHomeButton.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+}
+
+
+if (desktopMovementsButton) {
+
+    desktopMovementsButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "historial.html";
+
+        }
+    );
+}
+
+
+if (desktopServicesButton) {
+
+    desktopServicesButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "servicios.html";
+
+        }
+    );
+}
+
+
+if (desktopHelpButton) {
+
+    desktopHelpButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "ayuda.html";
+
+        }
+    );
+}
+
+
+if (profileButton) {
+
+    profileButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "perfil.html";
+
+        }
+    );
+}
 comprobarSesion();

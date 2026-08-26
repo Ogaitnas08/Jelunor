@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mi perfil | Jelunor</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/perfil.css"
+    >
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <div class="header-left-group">
+
+            <a
+                href="index.html"
+                class="back-button"
+                aria-label="Volver"
+            >
+                ←
+            </a>
+
+            <div class="header-logos">
+
+                <img
+                    src="asset/logo.jpeg"
+                    alt="Jelunor"
+                    class="jelunor-logo"
+                >
+
+                <span class="logo-divider"></span>
+
+                <img
+                    src="asset/SENA.jpeg"
+                    alt="SENA"
+                    class="sena-logo"
+                >
+
+            </div>
+
+        </div>
+
+        <a
+            href="index.html"
+            class="account-button"
+        >
+            Mi cuenta
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <!-- ========================================== -->
+        <!-- PERFIL -->
+        <!-- ========================================== -->
+
+        <section class="profile-hero">
+
+            <div class="profile-photo-area">
+
+    <div
+        id="profileAvatar"
+        class="profile-avatar"
+    >
+        <span id="profileInitials">
+            JL
+        </span>
+
+        <img
+            id="profilePhoto"
+            class="profile-photo hidden"
+            alt="Foto de perfil"
+        >
+    </div>
+
+
+    <input
+        type="file"
+        id="profilePhotoInput"
+        accept="image/jpeg,image/png,image/webp"
+        hidden
+    >
+
+
+    <button
+        type="button"
+        id="changePhotoButton"
+        class="change-photo-button"
+    >
+        📷 Cambiar foto
+    </button>
+
+
+    <button
+        type="button"
+        id="removePhotoButton"
+        class="remove-photo-button hidden"
+    >
+        Quitar
+    </button>
+
+
+    <p
+        id="photoMessage"
+        class="photo-message"
+    ></p>
+
+</div>
+
+            <div>
+
+                <span class="eyebrow">
+                    MI PERFIL
+                </span>
+
+                <h1 id="profileTitle">
+                    Cargando...
+                </h1>
+
+                <p>
+                    Información asociada a tu cuenta Jelunor.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- INFORMACIÓN PERSONAL -->
+        <!-- ========================================== -->
+
+        <section class="profile-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    INFORMACIÓN PERSONAL
+                </span>
+
+                <h2>
+                    Tus datos
+                </h2>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <article class="info-card">
+
+                    <span>
+                        Nombre
+                    </span>
+
+                    <strong id="profileName">
+                        -
+                    </strong>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <span>
+                        Documento
+                    </span>
+
+                    <strong id="profileDocument">
+                        -
+                    </strong>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <span>
+                        Correo
+                    </span>
+
+                    <strong id="profileEmail">
+                        -
+                    </strong>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <span>
+                        Teléfono
+                    </span>
+
+                    <strong id="profilePhone">
+                        -
+                    </strong>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- CUENTA -->
+        <!-- ========================================== -->
+
+        <section class="profile-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    CUENTA JELUNOR
+                </span>
+
+                <h2>
+                    Información de tu cuenta
+                </h2>
+
+            </div>
+
+
+            <div class="account-card">
+
+                <div>
+
+                    <span>
+                        Número de cuenta
+                    </span>
+
+                    <strong id="profileAccountNumber">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Tipo
+                    </span>
+
+                    <strong id="profileAccountType">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Estado
+                    </span>
+
+                    <strong class="active-text">
+                        Activa
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Moneda
+                    </span>
+
+                    <strong>
+                        COP
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- ACCESOS -->
+        <!-- ========================================== -->
+
+        <section class="profile-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    JELUNOR
+                </span>
+
+                <h2>
+                    Accesos rápidos
+                </h2>
+
+            </div>
+
+
+            <div class="quick-grid">
+
+                <a
+                    href="historial.html"
+                    class="quick-card"
+                >
+                    <span class="quick-icon">
+                        ▤
+                    </span>
+
+                    <div>
+                        <strong>
+                            Movimientos
+                        </strong>
+
+                        <small>
+                            Consulta tu historial
+                        </small>
+                    </div>
+                </a>
+
+
+                <a
+                    href="servicios.html"
+                    class="quick-card"
+                >
+                    <span class="quick-icon">
+                        ◫
+                    </span>
+
+                    <div>
+                        <strong>
+                            Servicios
+                        </strong>
+
+                        <small>
+                            Conoce lo que ofrece Jelunor
+                        </small>
+                    </div>
+                </a>
+
+
+                <a
+                    href="creditos.html"
+                    class="quick-card"
+                >
+                    <span class="quick-icon">
+                        $
+                    </span>
+
+                    <div>
+                        <strong>
+                            Microcrédito
+                        </strong>
+
+                        <small>
+                            Simula tu financiación
+                        </small>
+                    </div>
+                </a>
+
+
+                <a
+                    href="ahorros.html"
+                    class="quick-card"
+                >
+                    <span class="quick-icon">
+                        🌱
+                    </span>
+
+                    <div>
+                        <strong>
+                            Plan de ahorro
+                        </strong>
+
+                        <small>
+                            Consulta o crea tu meta
+                        </small>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- SEGURIDAD -->
+        <!-- ========================================== -->
+
+        <section class="security-card">
+
+            <div class="security-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <span class="eyebrow">
+                    SEGURIDAD
+                </span>
+
+                <h3>
+                    Sesión protegida
+                </h3>
+
+                <p>
+                    Tu cuenta requiere autenticación para
+                    consultar información y realizar operaciones.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- CERRAR SESIÓN -->
+        <!-- ========================================== -->
+
+        <section class="logout-section">
+
+            <div>
+
+                <h3>
+                    ¿Quieres salir de Jelunor?
+                </h3>
+
+                <p>
+                    Tendrás que iniciar sesión nuevamente.
+                </p>
+
+            </div>
+<!-- ========================================== -->
+<!-- CAMBIAR CONTRASEÑA -->
+<!-- ========================================== -->
+
+<section class="profile-section">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            SEGURIDAD
+        </span>
+
+        <h2>
+            Actualizar contraseña
+        </h2>
+
+        <p class="section-description">
+            Para cambiar tu contraseña debes confirmar
+            primero la contraseña actual.
+        </p>
+
+    </div>
+
+
+    <form
+        id="passwordForm"
+        class="password-card"
+    >
+
+        <div class="password-field">
+
+            <label for="currentPassword">
+                Contraseña actual
+            </label>
+
+            <input
+                type="password"
+                id="currentPassword"
+                autocomplete="current-password"
+                required
+            >
+
+        </div>
+
+
+        <div class="password-field">
+
+            <label for="newPassword">
+                Nueva contraseña
+            </label>
+
+            <input
+                type="password"
+                id="newPassword"
+                minlength="6"
+                autocomplete="new-password"
+                required
+            >
+
+            <small>
+                Mínimo 6 caracteres.
+            </small>
+
+        </div>
+
+
+        <div class="password-field">
+
+            <label for="confirmNewPassword">
+                Confirmar nueva contraseña
+            </label>
+
+            <input
+                type="password"
+                id="confirmNewPassword"
+                minlength="6"
+                autocomplete="new-password"
+                required
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="changePasswordButton"
+            class="change-password-button"
+        >
+            Actualizar contraseña
+        </button>
+
+
+        <p
+            id="passwordMessage"
+            class="password-message"
+        ></p>
+
+    </form>
+
+</section>
+            <button
+                type="button"
+                id="profileLogoutButton"
+                class="logout-button"
+            >
+                Cerrar sesión
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <strong>
+            JELUNOR
+        </strong>
+
+        <span>
+            Finanzas con impacto
+        </span>
+
+    </footer>
+
+
+    <script src="JS/perfil.js"></script>
+
+</body>
+
+</html>

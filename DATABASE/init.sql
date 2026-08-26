@@ -42,3 +42,43 @@ CREATE TABLE IF NOT EXISTS notificaciones (
     FOREIGN KEY (usuario_id)
         REFERENCES usuarios(id)
 );
+
+CREATE TABLE IF NOT EXISTS planes_ahorro (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario_id INTEGER NOT NULL,
+    nombre TEXT NOT NULL,
+    meta REAL NOT NULL,
+    meses INTEGER NOT NULL,
+    frecuencia TEXT NOT NULL,
+    aporte REAL NOT NULL,
+    numero_aportes INTEGER NOT NULL,
+    ahorrado REAL DEFAULT 0,
+    estado TEXT DEFAULT 'activo',
+    ultimo_recordatorio TEXT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios(id)
+);
+CREATE TABLE IF NOT EXISTS aportes_ahorro (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    plan_id INTEGER NOT NULL,
+    usuario_id INTEGER NOT NULL,
+    monto REAL NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (plan_id)
+        REFERENCES planes_ahorro(id),
+
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios(id)
+);
+
+CREATE TABLE IF NOT EXISTS fotos_perfil (
+    usuario_id INTEGER PRIMARY KEY,
+    imagen TEXT NOT NULL,
+    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios(id)
+);

@@ -1,0 +1,726 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --green-dark: #06382d;
+    --green: #13513f;
+    --green-medium: #438c5c;
+    --mint: #79bfa3;
+    --gold: #d3bc83;
+    --cream: #f5f1e8;
+    --white: #ffffff;
+    --text: #25382f;
+    --muted: #687a71;
+    --border: #dfe5df;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--text);
+
+    line-height: 1.5;
+}
+
+.services-header {
+    min-height: 84px;
+
+    padding:
+        14px
+        clamp(16px, 5vw, 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background:
+        var(--green-dark);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.back-button {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color:
+        white;
+
+    text-decoration: none;
+
+    font-size: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+}
+
+.brand-logos {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.brand-logos img {
+    display: block;
+
+    object-fit: contain;
+}
+
+.jelunor-logo {
+    height: 48px;
+
+    border-radius: 7px;
+}
+
+.sena-logo {
+    height: 44px;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 34px;
+
+    background:
+        rgba(255, 255, 255, 0.3);
+}
+
+.profile-link {
+    color:
+        white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    padding:
+        10px 16px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+}
+
+main {
+    width:
+        min(1180px, calc(100% - 32px));
+
+    margin:
+        0 auto;
+}
+
+.hero {
+    padding:
+        80px 0 65px;
+
+    max-width:
+        800px;
+}
+
+.eyebrow,
+.section-heading > span,
+.service-type {
+    color:
+        var(--green-medium);
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.6px;
+}
+
+.hero h1 {
+    margin-top:
+        10px;
+
+    font-size:
+        clamp(38px, 6vw, 72px);
+
+    line-height:
+        1;
+
+    max-width:
+        850px;
+
+    color:
+        var(--green-dark);
+}
+
+.hero p {
+    margin-top:
+        24px;
+
+    max-width:
+        690px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        18px;
+}
+
+.hero-actions {
+    margin-top:
+        30px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.primary-button,
+.secondary-button,
+.card-button {
+    min-height:
+        46px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        12px;
+
+    padding:
+        12px 20px;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        800;
+
+    border:
+        none;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+}
+
+.primary-button {
+    color:
+        white;
+
+    background:
+        var(--green);
+}
+
+.secondary-button {
+    color:
+        var(--green);
+
+    background:
+        transparent;
+
+    border:
+        1px solid var(--green);
+}
+
+.services-section {
+    padding:
+        35px 0 80px;
+}
+
+.section-heading {
+    max-width:
+        650px;
+
+    margin-bottom:
+        32px;
+}
+
+.section-heading h2 {
+    margin:
+        7px 0 12px;
+
+    font-size:
+        clamp(30px, 4vw, 44px);
+
+    color:
+        var(--green-dark);
+}
+
+.section-heading p {
+    color:
+        var(--muted);
+}
+
+.services-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        22px;
+}
+
+.service-card {
+    padding:
+        30px;
+
+    border-radius:
+        22px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    min-width:
+        0;
+}
+
+.service-card.featured {
+    background:
+        var(--green-dark);
+
+    color:
+        white;
+
+    border-color:
+        var(--green-dark);
+}
+
+.service-icon {
+    width:
+        54px;
+
+    height:
+        54px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        15px;
+
+    background:
+        var(--cream);
+
+    font-size:
+        27px;
+}
+
+.service-card h3 {
+    margin:
+        7px 0 12px;
+
+    font-size:
+        24px;
+}
+
+.service-card p {
+    color:
+        var(--muted);
+}
+
+.featured p {
+    color:
+        rgba(255, 255, 255, 0.75);
+}
+
+.service-card ul {
+    margin:
+        20px 0;
+
+    padding-left:
+        20px;
+
+    color:
+        var(--muted);
+}
+
+.service-card li {
+    margin:
+        6px 0;
+}
+
+.credit-data {
+    margin:
+        24px 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        12px;
+}
+
+.credit-data div {
+    padding:
+        14px;
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+}
+
+.credit-data span,
+.credit-data strong {
+    display:
+        block;
+}
+
+.credit-data span {
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size:
+        12px;
+}
+
+.credit-data strong {
+    margin-top:
+        4px;
+
+    font-size:
+        19px;
+}
+
+.card-button {
+    margin-top:
+        auto;
+
+    color:
+        white;
+
+    background:
+        var(--green);
+
+    align-self:
+        flex-start;
+}
+
+.featured .card-button {
+    color:
+        var(--green-dark);
+
+    background:
+        var(--gold);
+}
+
+.disabled-button {
+    opacity:
+        0.65;
+
+    cursor:
+        default;
+}
+
+.agro-section {
+    margin:
+        20px 0 80px;
+
+    padding:
+        45px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    border-radius:
+        25px;
+
+    background:
+        #e7efe6;
+}
+
+.agro-content {
+    max-width:
+        690px;
+}
+
+.agro-content h2 {
+    margin:
+        8px 0 14px;
+
+    font-size:
+        clamp(28px, 4vw, 42px);
+
+    color:
+        var(--green-dark);
+}
+
+.agro-content p {
+    color:
+        var(--muted);
+}
+
+.agro-icon {
+    font-size:
+        80px;
+}
+
+.tools-section {
+    margin-bottom:
+        80px;
+
+    padding:
+        35px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    border-radius:
+        22px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+}
+
+.tools-section h2 {
+    margin:
+        7px 0 10px;
+
+    color:
+        var(--green-dark);
+}
+
+.tools-section p {
+    max-width:
+        650px;
+
+    color:
+        var(--muted);
+}
+
+footer {
+    padding:
+        35px 16px 45px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    color:
+        var(--muted);
+}
+
+footer strong {
+    color:
+        var(--green);
+}
+
+@media (max-width: 720px) {
+
+    .services-header {
+        min-height:
+            70px;
+
+        padding:
+            10px 14px;
+    }
+
+    .jelunor-logo {
+        height:
+            37px;
+    }
+
+    .sena-logo {
+        height:
+            34px;
+    }
+
+    .logo-divider {
+        height:
+            26px;
+    }
+
+    .profile-link {
+        font-size:
+            12px;
+
+        padding:
+            8px 10px;
+    }
+
+    .hero {
+        padding:
+            50px 0;
+    }
+
+    .hero h1 {
+        font-size:
+            42px;
+    }
+
+    .services-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .service-card {
+        padding:
+            24px;
+    }
+
+    .agro-section {
+        padding:
+            28px 24px;
+
+        align-items:
+            flex-start;
+    }
+
+    .agro-icon {
+        font-size:
+            45px;
+    }
+
+    .tools-section {
+        padding:
+            26px 22px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .brand-logos {
+        gap:
+            6px;
+    }
+
+    .jelunor-logo {
+        height:
+            31px;
+    }
+
+    .sena-logo {
+        height:
+            29px;
+    }
+
+    .logo-divider {
+        height:
+            23px;
+    }
+
+    .profile-link {
+        display:
+            none;
+    }
+
+    .hero h1 {
+        font-size:
+            36px;
+    }
+.header-left-group {
+    gap: 8px;
+}
+    .hero-actions {
+        flex-direction:
+            column;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width:
+            100%;
+    }
+
+    .credit-data {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+.header-left-group {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}

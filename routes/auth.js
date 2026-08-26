@@ -359,9 +359,16 @@ router.get("/me", (req, res) => {
                 u.nombre,
                 u.correo,
                 u.documento,
-                u.telefono,
+            u.telefono,
 
-                c.id AS cuenta_id,
+(
+    SELECT imagen
+    FROM fotos_perfil
+    WHERE usuario_id = u.id
+    LIMIT 1
+) AS foto_perfil,
+
+c.id AS cuenta_id,
                 c.numero_cuenta,
                 c.saldo,
                 c.tipo
@@ -421,13 +428,14 @@ router.get("/me", (req, res) => {
             autenticado: true,
 
             usuario: {
-                id: usuario.id,
-                nombre: usuario.nombre,
-                correo: usuario.correo,
-                documento: usuario.documento,
-                telefono: usuario.telefono
-            },
-
+    id: usuario.id,
+    nombre: usuario.nombre,
+    correo: usuario.correo,
+    documento: usuario.documento,
+    telefono: usuario.telefono,
+    fotoPerfil:
+        usuario.foto_perfil || null
+},
             cuenta: {
                 id: usuario.cuenta_id,
                 numeroCuenta: usuario.numero_cuenta,
@@ -455,32 +463,633 @@ router.get("/me", (req, res) => {
 
 });
 
+// ==========================================
+// GUARDAR FOTO DE PERFIL
+// ==========================================
+
+router.post(
+    "/foto-perfil",
+    (req, res) => {
+
+        try {
+
+            if (!req.session.usuarioId) {
+
+                return res
+                    .status(401)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Debes iniciar sesión."
+                    });
+            }
+
+
+            const imagen =
+                String(
+                    req.body.imagen || ""
+                );
+
+
+            const formatoPermitido =
+                /^data:image\/(jpeg|jpg|png|webp);base64,/;
+
+
+            if (
+                !imagen ||
+                !formatoPermitido.test(
+                    imagen
+                )
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Selecciona una imagen válida."
+                    });
+            }
+
+
+            if (
+                imagen.length >
+                1500000
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La imagen es demasiado grande."
+                    });
+            }
+
+
+            db.prepare(`
+                INSERT INTO fotos_perfil (
+                    usuario_id,
+                    imagen,
+                    fecha_actualizacion
+                )
+
+                VALUES (
+                    ?, ?,
+                    CURRENT_TIMESTAMP
+                )
+
+                ON CONFLICT(usuario_id)
+                DO UPDATE SET
+                    imagen =
+                        excluded.imagen,
+                    fecha_actualizacion =
+                        CURRENT_TIMESTAMP
+            `)
+            .run(
+                req.session.usuarioId,
+                imagen
+            );
+
+
+            return res.json({
+                ok: true,
+                mensaje:
+                    "Foto de perfil actualizada.",
+                imagen
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error guardando foto:",
+                error
+            );
+
+
+            return res
+                .status(500)
+                .json({
+                    ok: false,
+                    mensaje:
+                        "No fue posible guardar la foto."
+                });
+        }
+    }
+);
+
+
+// ==========================================
+// ELIMINAR FOTO DE PERFIL
+// ==========================================
+
+router.delete(
+    "/foto-perfil",
+    (req, res) => {
+
+        try {
+
+            if (!req.session.usuarioId) {
+
+                return res
+                    .status(401)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Debes iniciar sesión."
+                    });
+            }
+
+
+            db.prepare(`
+                DELETE FROM fotos_perfil
+
+                WHERE usuario_id = ?
+            `)
+            .run(
+                req.session.usuarioId
+            );
+
+
+            return res.json({
+                ok: true,
+                mensaje:
+                    "Foto eliminada."
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error eliminando foto:",
+                error
+            );
+
+
+            return res
+                .status(500)
+                .json({
+                    ok: false,
+                    mensaje:
+                        "No fue posible eliminar la foto."
+                });
+        }
+    }
+);
 
 // ==========================================
 // CERRAR SESIÓN
 // ==========================================
 
-router.post("/logout", (req, res) => {
+router.post(
+    "/foto-perfil",
+    (req, res) => {
+        // código para guardar la foto
+    }
+);
 
-    req.session.destroy((error) => {
+router.delete(
+    "/foto-perfil",
+    (req, res) => {
+        // código para eliminar la foto
+    }
+);
 
-        if (error) {
+// ==========================================
+// CAMBIAR CONTRASEÑA
+// ==========================================
 
-            return res.status(500).json({
-                ok: false,
-                mensaje: "No se pudo cerrar la sesión."
+router.post(
+    "/cambiar-password",
+    async (req, res) => {
+
+        try {
+
+            if (!req.session.usuarioId) {
+
+                return res
+                    .status(401)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Debes iniciar sesión."
+                    });
+            }
+
+
+            const {
+                passwordActual,
+                passwordNueva,
+                confirmarPassword
+            } = req.body;
+
+
+            // ------------------------------------------
+            // VALIDAR CAMPOS
+            // ------------------------------------------
+
+            if (
+                !passwordActual ||
+                !passwordNueva ||
+                !confirmarPassword
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Completa todos los campos."
+                    });
+            }
+
+
+            // ------------------------------------------
+            // VALIDAR NUEVA CONTRASEÑA
+            // ------------------------------------------
+
+            if (
+                passwordNueva.length < 6
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La nueva contraseña debe tener mínimo 6 caracteres."
+                    });
+            }
+
+
+            if (
+                passwordNueva !==
+                confirmarPassword
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Las nuevas contraseñas no coinciden."
+                    });
+            }
+
+
+            if (
+                passwordActual ===
+                passwordNueva
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La nueva contraseña debe ser diferente a la actual."
+                    });
+            }
+
+
+            // ------------------------------------------
+            // BUSCAR CONTRASEÑA ACTUAL
+            // ------------------------------------------
+
+            const usuario =
+                db.prepare(`
+                    SELECT
+                        id,
+                        password
+
+                    FROM usuarios
+
+                    WHERE id = ?
+
+                    LIMIT 1
+                `)
+                .get(
+                    req.session.usuarioId
+                );
+
+
+            if (!usuario) {
+
+                return res
+                    .status(404)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Usuario no encontrado."
+                    });
+            }
+
+
+            // ------------------------------------------
+            // COMPROBAR CONTRASEÑA ACTUAL
+            // ------------------------------------------
+
+            const passwordCorrecta =
+                await bcrypt.compare(
+                    passwordActual,
+                    usuario.password
+                );
+
+
+            if (!passwordCorrecta) {
+
+                return res
+                    .status(401)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La contraseña actual es incorrecta."
+                    });
+            }
+
+
+            // ------------------------------------------
+            // ENCRIPTAR CONTRASEÑA NUEVA
+            // ------------------------------------------
+
+            const nuevaPasswordHash =
+                await bcrypt.hash(
+                    passwordNueva,
+                    12
+                );
+
+
+            // ------------------------------------------
+            // ACTUALIZAR
+            // ------------------------------------------
+
+            db.prepare(`
+                UPDATE usuarios
+
+                SET password = ?
+
+                WHERE id = ?
+            `)
+            .run(
+                nuevaPasswordHash,
+                req.session.usuarioId
+            );
+
+
+            // ------------------------------------------
+            // NOTIFICACIÓN
+            // ------------------------------------------
+
+            db.prepare(`
+                INSERT INTO notificaciones (
+                    usuario_id,
+                    titulo,
+                    mensaje,
+                    tipo
+                )
+
+                VALUES (?, ?, ?, ?)
+            `)
+            .run(
+                req.session.usuarioId,
+                "🔐 Contraseña actualizada",
+                "La contraseña de tu cuenta Jelunor fue actualizada correctamente.",
+                "seguridad"
+            );
+
+
+            return res.json({
+                ok: true,
+                mensaje:
+                    "Contraseña actualizada correctamente."
             });
 
+
+        } catch (error) {
+
+            console.error(
+                "Error cambiando contraseña:",
+                error
+            );
+
+
+            return res
+                .status(500)
+                .json({
+                    ok: false,
+                    mensaje:
+                        "No fue posible actualizar la contraseña."
+                });
         }
+    }
+);
 
-        res.clearCookie("connect.sid");
+// ==========================================
+// RECUPERAR CONTRASEÑA
+// ==========================================
 
-        res.json({
-            ok: true,
-            mensaje: "Sesión cerrada."
-        });
+router.post(
+    "/recuperar-password",
+    async (req, res) => {
 
-    });
+        try {
 
+            const {
+                correo,
+                documento,
+                passwordNueva,
+                confirmarPassword
+            } = req.body;
+
+
+            if (
+                !correo ||
+                !documento ||
+                !passwordNueva ||
+                !confirmarPassword
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Completa todos los campos."
+                    });
+            }
+
+
+            if (
+                passwordNueva.length < 6
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La contraseña debe tener mínimo 6 caracteres."
+                    });
+            }
+
+
+            if (
+                passwordNueva !==
+                confirmarPassword
+            ) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Las contraseñas no coinciden."
+                    });
+            }
+
+
+            const correoNormalizado =
+                correo
+                    .trim()
+                    .toLowerCase();
+
+
+            const documentoNormalizado =
+                documento.trim();
+
+
+            const usuario =
+                db.prepare(`
+                    SELECT
+                        id,
+                        nombre,
+                        password
+
+                    FROM usuarios
+
+                    WHERE correo = ?
+                      AND documento = ?
+
+                    LIMIT 1
+                `)
+                .get(
+                    correoNormalizado,
+                    documentoNormalizado
+                );
+
+
+            if (!usuario) {
+
+                /*
+                    Mensaje genérico para no indicar
+                    cuál dato fue incorrecto.
+                */
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "Los datos ingresados no coinciden con una cuenta Jelunor."
+                    });
+            }
+
+
+            const mismaPassword =
+                await bcrypt.compare(
+                    passwordNueva,
+                    usuario.password
+                );
+
+
+            if (mismaPassword) {
+
+                return res
+                    .status(400)
+                    .json({
+                        ok: false,
+                        mensaje:
+                            "La nueva contraseña debe ser diferente a la anterior."
+                    });
+            }
+
+
+            const passwordHash =
+                await bcrypt.hash(
+                    passwordNueva,
+                    12
+                );
+
+
+            db.transaction(
+                () => {
+
+                    db.prepare(`
+                        UPDATE usuarios
+
+                        SET password = ?
+
+                        WHERE id = ?
+                    `)
+                    .run(
+                        passwordHash,
+                        usuario.id
+                    );
+
+
+                    db.prepare(`
+                        INSERT INTO notificaciones (
+                            usuario_id,
+                            titulo,
+                            mensaje,
+                            tipo
+                        )
+
+                        VALUES (?, ?, ?, ?)
+                    `)
+                    .run(
+                        usuario.id,
+                        "🔐 Contraseña recuperada",
+                        "La contraseña de tu cuenta Jelunor fue restablecida.",
+                        "seguridad"
+                    );
+
+                }
+            )();
+
+
+            return res.json({
+                ok: true,
+                mensaje:
+                    "Contraseña actualizada correctamente."
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error recuperando contraseña:",
+                error
+            );
+
+
+            return res
+                .status(500)
+                .json({
+                    ok: false,
+                    mensaje:
+                        "No fue posible recuperar la contraseña."
+                });
+        }
+    }
+);
+// CERRAR SESIÓN
+router.post("/logout", (req, res) => {
+    // ...
 });
+
+
+module.exports = router;
+
 module.exports = router;

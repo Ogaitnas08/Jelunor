@@ -1,0 +1,534 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --green-dark: #06382d;
+    --green: #13513f;
+    --green-medium: #438c5c;
+    --mint: #79bfa3;
+    --gold: #d3bc83;
+    --cream: #f5f1e8;
+    --white: #ffffff;
+    --text: #25382f;
+    --muted: #687a71;
+    --border: #dfe5df;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--text);
+
+    line-height: 1.5;
+}
+
+
+/* ===================================================== */
+/* HEADER */
+/* ===================================================== */
+
+.page-header {
+    min-height: 82px;
+
+    padding:
+        14px
+        clamp(16px, 5vw, 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    background:
+        var(--green-dark);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.header-left-group {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 0;
+}
+
+.back-button {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 24px;
+}
+
+.header-logos {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.jelunor-logo {
+    height: 47px;
+
+    width: auto;
+
+    border-radius: 7px;
+}
+
+.sena-logo {
+    height: 43px;
+
+    width: auto;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 34px;
+
+    background:
+        rgba(255, 255, 255, 0.3);
+}
+
+.account-button {
+    padding:
+        10px 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* ===================================================== */
+/* GENERAL */
+/* ===================================================== */
+
+main {
+    width:
+        min(1050px, calc(100% - 32px));
+
+    margin:
+        0 auto;
+}
+
+.eyebrow {
+    color:
+        var(--green-medium);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+
+/* ===================================================== */
+/* HERO */
+/* ===================================================== */
+
+.help-hero {
+    padding:
+        65px 0 45px;
+
+    max-width: 760px;
+}
+
+.help-hero h1 {
+    margin:
+        7px 0 15px;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        clamp(38px, 7vw, 64px);
+
+    line-height: 1;
+}
+
+.help-hero p {
+    max-width: 650px;
+
+    color:
+        var(--muted);
+
+    font-size: 17px;
+}
+
+
+/* ===================================================== */
+/* ACCESOS */
+/* ===================================================== */
+
+.quick-help {
+    margin-bottom: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.help-card {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border-radius: 18px;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    color:
+        var(--text);
+
+    text-decoration: none;
+}
+
+.help-icon {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background:
+        #eaf1eb;
+
+    color:
+        var(--green);
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+.help-card strong,
+.help-card small {
+    display: block;
+}
+
+.help-card strong {
+    color:
+        var(--green-dark);
+}
+
+.help-card small {
+    margin-top: 3px;
+
+    color:
+        var(--muted);
+}
+
+
+/* ===================================================== */
+/* FAQ */
+/* ===================================================== */
+
+.faq-section {
+    margin-bottom: 55px;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-top: 5px;
+
+    color:
+        var(--green-dark);
+
+    font-size: 31px;
+}
+
+.faq-list {
+    display: grid;
+
+    gap: 10px;
+}
+
+.faq-item {
+    padding:
+        0 20px;
+
+    border-radius: 15px;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+}
+
+.faq-item summary {
+    padding:
+        19px 0;
+
+    cursor: pointer;
+
+    color:
+        var(--green-dark);
+
+    font-weight: 800;
+}
+
+.faq-item p {
+    padding:
+        0 0 15px;
+
+    color:
+        var(--muted);
+}
+
+.faq-item a {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color:
+        var(--green-medium);
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+/* ===================================================== */
+/* SEGURIDAD */
+/* ===================================================== */
+
+.security-help {
+    margin-bottom: 25px;
+
+    padding: 28px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    border-radius: 20px;
+
+    background:
+        #e6efe7;
+}
+
+.security-icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background: white;
+
+    font-size: 29px;
+}
+
+.security-help h2 {
+    margin:
+        4px 0;
+
+    color:
+        var(--green-dark);
+}
+
+.security-help p {
+    color:
+        var(--muted);
+}
+
+
+/* ===================================================== */
+/* FINAL */
+/* ===================================================== */
+
+.help-actions {
+    margin-bottom: 70px;
+
+    padding: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-radius: 20px;
+
+    background:
+        var(--green-dark);
+
+    color: white;
+}
+
+.help-actions h2 {
+    margin-top: 5px;
+}
+
+.primary-button {
+    min-height: 48px;
+
+    padding:
+        0 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        var(--gold);
+
+    color:
+        var(--green-dark);
+
+    text-decoration: none;
+
+    font-weight: 800;
+}
+
+
+/* ===================================================== */
+/* FOOTER */
+/* ===================================================== */
+
+footer {
+    padding:
+        30px 16px 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color:
+        var(--muted);
+}
+
+footer strong {
+    color:
+        var(--green);
+}
+
+
+/* ===================================================== */
+/* RESPONSIVE */
+/* ===================================================== */
+
+@media (max-width: 850px) {
+
+    .quick-help {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .page-header {
+        min-height: 70px;
+
+        padding:
+            10px 14px;
+    }
+
+    .header-left-group {
+        gap: 8px;
+    }
+
+    .jelunor-logo {
+        height: 30px;
+    }
+
+    .sena-logo {
+        height: 28px;
+    }
+
+    .account-button {
+        display: none;
+    }
+
+    .quick-help {
+        grid-template-columns:
+            1fr;
+    }
+
+    .security-help {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .help-actions {
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Microcrédito | Jelunor</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/creditos.css"
+    >
+</head>
+
+<body>
+
+    <header class="page-header">
+
+    <div class="header-left-group">
+
+        <a
+            href="servicios.html"
+            class="back-button"
+            aria-label="Volver"
+        >
+            ←
+        </a>
+
+        <div class="header-logos">
+
+            <img
+                src="asset/logo.jpeg"
+                alt="Jelunor"
+                class="jelunor-logo"
+            >
+
+            <span class="logo-divider"></span>
+
+            <img
+                src="asset/SENA.jpeg"
+                alt="SENA"
+                class="sena-logo"
+            >
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="account-button"
+    >
+        Mi cuenta
+    </a>
+
+</header>
+
+    <main>
+
+        <section class="hero">
+
+            <span class="eyebrow">
+                MICROCRÉDITO JELUNOR
+            </span>
+
+            <h1>
+                Simula tu microcrédito
+            </h1>
+
+            <p>
+                Calcula una cuota estimada antes de
+                solicitar financiación.
+            </p>
+
+        </section>
+
+
+        <section class="credit-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    SIMULADOR
+                </span>
+
+                <h2>
+                    ¿Cuánto necesitas?
+                </h2>
+
+                <p>
+                    Puedes simular montos de hasta
+                    $3.000.000 COP con una tasa anual
+                    del 18 %.
+                </p>
+
+            </div>
+
+
+            <div class="simulator-layout">
+
+                <article class="form-card">
+
+                    <div class="field">
+
+                        <label for="creditAmount">
+                            Monto solicitado
+                        </label>
+
+                        <div class="money-input">
+
+                            <span>
+                                $
+                            </span>
+
+                            <input
+                                type="number"
+                                id="creditAmount"
+                                min="100000"
+                                max="3000000"
+                                step="50000"
+                                value="1000000"
+                            >
+
+                        </div>
+
+                        <small>
+                            Mínimo sugerido: $100.000 ·
+                            Máximo permitido: $3.000.000
+                        </small>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="creditRange">
+                            Ajustar monto
+                        </label>
+
+                        <input
+                            type="range"
+                            id="creditRange"
+                            min="100000"
+                            max="3000000"
+                            step="50000"
+                            value="1000000"
+                        >
+
+                        <div class="range-labels">
+
+                            <span>
+                                $100 mil
+                            </span>
+
+                            <span>
+                                $3 millones
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="creditMonths">
+                            Plazo
+                        </label>
+
+                        <select id="creditMonths">
+
+                            <option value="3">
+                                3 meses
+                            </option>
+
+                            <option
+                                value="6"
+                                selected
+                            >
+                                6 meses
+                            </option>
+
+                            <option value="9">
+                                9 meses
+                            </option>
+
+                            <option value="12">
+                                12 meses
+                            </option>
+
+                            <option value="18">
+                                18 meses
+                            </option>
+
+                            <option value="24">
+                                24 meses
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="credit-conditions">
+
+                        <div>
+
+                            <span>
+                                Tasa anual
+                            </span>
+
+                            <strong>
+                                18 %
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Máximo
+                            </span>
+
+                            <strong>
+                                $3.000.000
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="result-card">
+
+                    <span class="result-label">
+                        CUOTA MENSUAL ESTIMADA
+                    </span>
+
+                    <strong
+                        id="monthlyPayment"
+                        class="main-result"
+                    >
+                        $0
+                    </strong>
+
+                    <span class="result-subtitle">
+                        aproximadamente cada mes
+                    </span>
+
+
+                    <div class="result-details">
+
+                        <div>
+
+                            <span>
+                                Monto solicitado
+                            </span>
+
+                            <strong id="creditRequested">
+                                $0
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Plazo
+                            </span>
+
+                            <strong id="creditTerm">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Intereses estimados
+                            </span>
+
+                            <strong id="creditInterest">
+                                $0
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Total estimado
+                            </span>
+
+                            <strong id="creditTotal">
+                                $0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice">
+
+                        <strong>
+                            Simulación informativa
+                        </strong>
+
+                        <p>
+                            Los valores mostrados son una
+                            estimación y pueden cambiar según
+                            las condiciones de aprobación.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="other-product">
+
+            <div>
+
+                <span class="eyebrow">
+                    TAMBIÉN EN JELUNOR
+                </span>
+
+                <h2>
+                    ¿Quieres organizar una meta de ahorro?
+                </h2>
+
+            </div>
+
+            <a
+                href="ahorros.html"
+                class="secondary-button"
+            >
+                Ir a ahorro programado
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <strong>
+            JELUNOR
+        </strong>
+
+        <span>
+            Finanzas con impacto
+        </span>
+
+    </footer>
+
+
+    <script src="JS/creditos.js"></script>
+
+</body>
+
+</html>

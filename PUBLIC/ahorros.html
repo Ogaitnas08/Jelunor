@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ahorro programado | Jelunor</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/ahorros.css"
+    >
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <div class="header-left-group">
+
+            <a
+                href="servicios.html"
+                class="back-button"
+                aria-label="Volver"
+            >
+                ←
+            </a>
+
+            <div class="header-logos">
+
+                <img
+                    src="asset/logo.jpeg"
+                    alt="Jelunor"
+                    class="jelunor-logo"
+                >
+
+                <span class="logo-divider"></span>
+
+                <img
+                    src="asset/SENA.jpeg"
+                    alt="SENA"
+                    class="sena-logo"
+                >
+
+            </div>
+
+        </div>
+
+        <a
+            href="index.html"
+            class="account-button"
+        >
+            Mi cuenta
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <span class="eyebrow">
+                AHORRO PROGRAMADO
+            </span>
+
+            <h1>
+                Convierte una meta en un plan
+            </h1>
+
+            <p>
+                Define cuánto quieres reunir,
+                cuánto tiempo tienes y con qué
+                frecuencia quieres ahorrar.
+            </p>
+
+        </section>
+
+
+        <section class="saving-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    PLAN DE AHORRO
+                </span>
+
+                <h2>
+                    Diseña tu meta Jelunor
+                </h2>
+
+                <p>
+                    Jelunor calculará cuánto necesitas
+                    separar diariamente, semanalmente
+                    o mensualmente.
+                </p>
+
+            </div>
+
+
+            <div class="saving-layout">
+
+                <article class="form-card">
+
+                    <div class="field">
+
+                        <label for="savingName">
+                            Nombre de tu meta
+                        </label>
+
+                        <input
+                            type="text"
+                            id="savingName"
+                            maxlength="80"
+                            placeholder="Ej: Compra de insumos"
+                            value="Mi proyecto"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="savingGoal">
+                            ¿Cuánto quieres ahorrar?
+                        </label>
+
+                        <div class="money-input">
+
+                            <span>
+                                $
+                            </span>
+
+                            <input
+                                type="number"
+                                id="savingGoal"
+                                min="10000"
+                                step="10000"
+                                value="3000000"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="savingTime">
+                            ¿En cuántos meses?
+                        </label>
+
+                        <input
+                            type="number"
+                            id="savingTime"
+                            min="1"
+                            max="120"
+                            value="12"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="savingFrequency">
+                            Frecuencia de ahorro
+                        </label>
+
+                        <select id="savingFrequency">
+
+                            <option value="daily">
+                                Diaria
+                            </option>
+
+                            <option value="weekly">
+                                Semanal
+                            </option>
+
+                            <option
+                                value="monthly"
+                                selected
+                            >
+                                Mensual
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="savePlanButton"
+                        class="save-plan-button"
+                    >
+                        Crear mi plan de ahorro
+                    </button>
+
+
+                    <p
+                        id="planMessage"
+                        class="plan-message"
+                    ></p>
+
+                </article>
+
+
+                <article class="result-card">
+
+                    <span class="result-label">
+                        NECESITAS AHORRAR
+                    </span>
+
+                    <strong
+                        id="savingRequired"
+                        class="main-result"
+                    >
+                        $0
+                    </strong>
+
+                    <span
+                        id="savingFrequencyText"
+                        class="result-subtitle"
+                    >
+                        cada mes
+                    </span>
+
+
+                    <div class="result-details">
+
+                        <div>
+
+                            <span>
+                                Meta
+                            </span>
+
+                            <strong id="savingGoalResult">
+                                $0
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Duración
+                            </span>
+
+                            <strong id="savingDurationResult">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Aportes estimados
+                            </span>
+
+                            <strong id="savingContributions">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Meta final
+                            </span>
+
+                            <strong id="savingFinalGoal">
+                                $0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- PLAN ACTIVO -->
+        <!-- ============================================== -->
+
+     <section
+    id="currentPlanSection"
+    class="current-plan hidden"
+>
+
+    <div class="current-plan-top">
+
+        <div>
+
+            <span class="eyebrow">
+                MI PLAN ACTIVO
+            </span>
+
+            <h2 id="currentPlanName">
+                Mi meta
+            </h2>
+
+        </div>
+
+        <span
+            id="currentPlanStatus"
+            class="plan-state"
+        >
+            Activo
+        </span>
+
+    </div>
+
+
+    <div class="current-plan-grid">
+
+        <div>
+
+            <span>
+                Meta
+            </span>
+
+            <strong id="currentPlanGoal">
+                $0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Ahorrado
+            </span>
+
+            <strong id="currentPlanSaved">
+                $0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Falta
+            </span>
+
+            <strong id="currentPlanRemaining">
+                $0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Aporte recomendado
+            </span>
+
+            <strong id="currentPlanContribution">
+                $0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Frecuencia
+            </span>
+
+            <strong id="currentPlanFrequency">
+                -
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Progreso
+            </span>
+
+            <strong id="currentPlanProgress">
+                0 %
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div
+            id="currentPlanProgressBar"
+            class="progress-bar"
+        ></div>
+
+    </div>
+
+
+    <!-- ============================================= -->
+    <!-- REGISTRAR APORTE -->
+    <!-- ============================================= -->
+
+    <div
+        id="contributionBox"
+        class="contribution-box"
+    >
+
+        <div>
+
+            <span class="eyebrow">
+                REGISTRAR AVANCE
+            </span>
+
+            <h3>
+                Registra un aporte
+            </h3>
+
+            <p>
+                Este registro actualiza el seguimiento
+                de tu meta.
+            </p>
+
+        </div>
+
+
+        <div class="contribution-form">
+
+            <div class="money-input">
+
+                <span>
+                    $
+                </span>
+
+                <input
+                    type="number"
+                    id="contributionAmount"
+                    min="1"
+                    step="1000"
+                    placeholder="Monto"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                id="registerContributionButton"
+                class="register-contribution-button"
+            >
+                Registrar aporte
+            </button>
+
+        </div>
+
+
+        <p
+            id="contributionMessage"
+            class="plan-message"
+        ></p>
+
+    </div>
+
+
+    <!-- ============================================= -->
+    <!-- ÚLTIMOS APORTES -->
+    <!-- ============================================= -->
+
+    <div class="contribution-history">
+
+        <h3>
+            Últimos aportes
+        </h3>
+
+        <div id="contributionList">
+
+            <p class="empty-contributions">
+                Aún no has registrado aportes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <section class="plan-info">
+
+            <div class="info-icon">
+                🔔
+            </div>
+
+            <div>
+
+                <span class="eyebrow">
+                    RECORDATORIOS
+                </span>
+
+                <h2>
+                    Jelunor te ayuda a mantener tu meta
+                </h2>
+
+                <p>
+                    Dependiendo de la frecuencia seleccionada,
+                    Jelunor podrá generar recordatorios de ahorro
+                    en tu sistema de notificaciones.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="plan-info">
+
+            <div class="info-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <span class="eyebrow">
+                    PROGRESO
+                </span>
+
+                <h2>
+                    Sigue el avance de tu ahorro
+                </h2>
+
+                <p>
+                    Tu plan quedará asociado a tu usuario
+                    y almacenado en la base de datos de Jelunor.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="other-product">
+
+            <div>
+
+                <span class="eyebrow">
+                    FINANCIACIÓN
+                </span>
+
+                <h2>
+                    ¿Necesitas un microcrédito?
+                </h2>
+
+            </div>
+
+            <a
+                href="creditos.html"
+                class="secondary-button"
+            >
+                Simular microcrédito
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <strong>
+            JELUNOR
+        </strong>
+
+        <span>
+            Finanzas con impacto
+        </span>
+
+    </footer>
+
+
+    <script src="JS/ahorros.js"></script>
+
+</body>
+
+</html>

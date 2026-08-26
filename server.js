@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-
+const savingsRoutes =
+    require("./routes/savings");
 const db = require("./DATABASE/db");
 
 const authRoutes = require("./routes/auth");
@@ -18,7 +19,11 @@ const PORT =
 // ======================================================
 // ESTO DEBE IR ANTES DE LAS RUTAS
 
-app.use(express.json());
+app.use(
+    express.json({
+        limit: "2mb"
+    })
+);
 
 
 // ======================================================
@@ -79,6 +84,11 @@ app.use(
 app.use(
     "/api/notifications",
     notificationRoutes
+);
+
+app.use(
+    "/api/savings",
+    savingsRoutes
 );
 
 // ======================================================
